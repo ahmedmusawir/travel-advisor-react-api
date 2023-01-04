@@ -6,12 +6,16 @@ import PlaceDetails from './components/PlaceDetails/PlaceDetails';
 import { CssBaseline, Grid } from '@material-ui/core';
 import { getPlaceData } from './api';
 import { LabelImportantRounded } from '@material-ui/icons';
+import { fakeData } from './data/fakeData';
 
 function App() {
   const [places, setPlaces] = useState([]);
+  const [childClicked, setChildClicked] = useState(null);
   const [coordinates, setCoordinates] = useState({});
-  // const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
   const [bounds, setBounds] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -25,15 +29,18 @@ function App() {
     console.log('Coordinates:', coordinates);
     console.log('Bounds:', bounds);
 
+    setIsLoading(true);
+
     if (bounds) {
       getPlaceData(bounds.sw, bounds.ne).then((data) => {
-        // getPlaceData().then((data) => {
         console.log('Data:', data);
 
         setPlaces(data);
+        setIsLoading(false);
       });
     }
-  }, [coordinates, bounds]);
+    // setPlaces(fakeData);
+  }, [bounds, coordinates]);
 
   return (
     <>
@@ -42,13 +49,19 @@ function App() {
       {coordinates && (
         <Grid container spacing={3} style={{ width: '100%' }}>
           <Grid item xs={12} md={4}>
-            <List />
+            <List
+              places={places}
+              childClicked={childClicked}
+              isLoading={isLoading}
+            />
           </Grid>
           <Grid item xs={12} md={8}>
             <Map
               setCoordinates={setCoordinates}
               setBounds={setBounds}
               coordinates={coordinates}
+              places={places}
+              setChildClicked={setChildClicked}
             />
           </Grid>
         </Grid>

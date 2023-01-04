@@ -6,16 +6,9 @@ import Rating from '@material-ui/lab/Rating';
 
 import useStyles from './styles';
 
-function Map({
-  setCoordinates,
-  setBounds,
-  coordinates,
-  places,
-  setChildClicked,
-}) {
+function Map({ setCoordinates, setBounds, coordinates, places }) {
   const classes = useStyles();
   const isDesktop = useMediaQuery('(min-width: 600px)');
-
   // const coordinates = { lat: 0, lng: 0 };
 
   return (
@@ -32,7 +25,7 @@ function Map({
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
-        onChildClick={(child) => setChildClicked(child)}
+        // onChildClick={''}
       >
         {places.length &&
           places?.map((place, i) => (
@@ -49,7 +42,7 @@ function Map({
                   <Typography
                     className={classes.typography}
                     variant='subtitle2'
-                    gutterButtom
+                    // gutterButtom
                   >
                     {place.name}
                   </Typography>
