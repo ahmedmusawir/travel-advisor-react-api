@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { Paper, Typography, useMediaQuery } from '@material-ui/core';
@@ -16,19 +17,25 @@ function Map({
   const classes = useStyles();
   const isDesktop = useMediaQuery('(min-width: 600px)');
 
-  // const coordinates = { lat: 0, lng: 0 };
-
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyCoC21nqLMFPVNw_guogj7x_BHGyPfC9lU' }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
         defaultCenter={coordinates}
         center={coordinates}
         defaultZoom={13}
         margin={[50, 50, 50, 50]}
-        options={''}
+        options={{
+          scrollwheel: false,
+          navigationControl: false,
+          mapTypeControl: false,
+          scaleControl: false,
+          draggable: false,
+          disableDefaultUI: true,
+          zoomControl: false,
+        }}
         onChange={(e) => {
-          console.log('Event Google Map:', e);
+          // console.log('Event Google Map:', e);
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}

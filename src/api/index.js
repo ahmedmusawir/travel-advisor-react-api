@@ -18,9 +18,8 @@ export const getPlaceData = async (type, sw, ne) => {
       tr_longitude: ne.lng,
     },
     headers: {
-      'X-RapidAPI-Key': 'f80279d24fmshcd035e6338443c9p11c937jsn303f49754aaa', // lillian.lue
+      'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI_TRAVEL_API_KEY, // lillian.lue
       'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com',
-      // 'X-RapidAPI-Key': '01979c6e5bmsh5cd6196dd41058bp1f6b24jsn0bb211c4b924', // odesk.shourav
     },
   };
 

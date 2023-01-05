@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useState } from 'react';
 import Header from './components/Header/Header';
 import List from './components/List/List';
@@ -39,18 +40,18 @@ function App() {
     console.log('Coordinates:', coordinates);
     console.log('Bounds:', bounds);
 
-    setIsLoading(true);
-
     if (bounds) {
+      setIsLoading(true);
+
       getPlaceData(type, bounds.sw, bounds.ne).then((data) => {
         console.log('Data:', data);
 
-        setPlaces(data);
+        setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
         setFilteredPlaces([]);
         setIsLoading(false);
       });
     }
-  }, [bounds, coordinates, type]);
+  }, [bounds, type]);
 
   return (
     <>
