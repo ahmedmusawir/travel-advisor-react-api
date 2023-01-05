@@ -1,10 +1,8 @@
 import axios from 'axios';
 
-const URL = '';
-
 export const getPlaceData = async (type, sw, ne) => {
-  console.log('SW', sw.lat);
-  console.log('SW', sw.lng);
+  // console.log('SW', sw.lat);
+  // console.log('SW', sw.lng);
   const options = {
     method: 'GET',
     params: {
@@ -23,8 +21,7 @@ export const getPlaceData = async (type, sw, ne) => {
     },
   };
 
-  const runAxios = async () => {
-    console.log({ type });
+  try {
     const {
       data: { data },
     } = await axios.get(
@@ -33,11 +30,6 @@ export const getPlaceData = async (type, sw, ne) => {
     );
 
     return data;
-  };
-
-  try {
-    const mooseData = runAxios();
-    return mooseData;
   } catch (error) {
     console.log('Axios faliure to get data:', error);
   }
