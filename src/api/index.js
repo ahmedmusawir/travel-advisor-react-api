@@ -3,10 +3,10 @@ import axios from 'axios';
 export const getPlaceData = async (type, sw, ne) => {
   // console.log('SW', sw.lat);
   // console.log('SW', sw.lng);
-  console.log(
-    'Rapid API Key',
-    process.env.REACT_APP_RAPIDAPI_TRAVEL_API_KEY_HTMLFIVEDEV
-  );
+  // console.log(
+  //   'Rapid API Key',
+  //   process.env.REACT_APP_RAPIDAPI_TRAVEL_API_KEY_HTMLFIVEDEV
+  // );
   const options = {
     method: 'GET',
     params: {
