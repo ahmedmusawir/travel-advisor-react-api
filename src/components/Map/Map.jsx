@@ -17,8 +17,6 @@ function Map({
   const classes = useStyles();
   const isDesktop = useMediaQuery('(min-width: 600px)');
 
-  // console.log('Rapid API key', process.env.REACT_APP_GOOGLE_MAPS_API_ODESK);
-
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
@@ -39,7 +37,7 @@ function Map({
           zoomControl: false,
         }}
         onChange={(e) => {
-          // console.log('Event Google Map:', e);
+          console.log('Event Google Map:', e);
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}

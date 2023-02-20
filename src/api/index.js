@@ -20,8 +20,7 @@ export const getPlaceData = async (type, sw, ne) => {
       tr_longitude: ne.lng,
     },
     headers: {
-      'X-RapidAPI-Key':
-        process.env.REACT_APP_RAPIDAPI_TRAVEL_API_KEY_HTMLFIVEDEV, // htmlfivedev
+      'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI_TRAVEL_API_KEY_HTML, // htmlfivedev
       'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com',
       // 'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI_TRAVEL_API_KEY, // lillian.lue
       // 'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI_TRAVEL_API_KEY_ODESK, // odesk.shourav

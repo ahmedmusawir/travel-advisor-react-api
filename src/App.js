@@ -3,10 +3,8 @@ import { useEffect, useState } from 'react';
 import Header from './components/Header/Header';
 import List from './components/List/List';
 import Map from './components/Map/Map';
-import PlaceDetails from './components/PlaceDetails/PlaceDetails';
 import { CssBaseline, Grid } from '@material-ui/core';
 import { getPlaceData } from './api';
-import { LabelImportantRounded } from '@material-ui/icons';
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -36,14 +34,14 @@ function App() {
 
   // THIS ONE WILL ONLY UPDATE WHEN bounds, coordinates or type IS UPDATED
   useEffect(() => {
-    // console.log('Coordinates:', coordinates);
-    // console.log('Bounds:', bounds);
+    console.log('Coordinates:', coordinates);
+    console.log('Bounds:', bounds);
 
     if (bounds) {
       setIsLoading(true);
 
       getPlaceData(type, bounds.sw, bounds.ne).then((data) => {
-        // console.log('Data:', data);
+        console.log('Data:', data);
 
         setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
         setFilteredPlaces([]);
